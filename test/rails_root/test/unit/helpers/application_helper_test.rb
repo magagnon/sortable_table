@@ -1,14 +1,13 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 
-class ApplicationHelperTest < HelperTestCase
+class ApplicationHelperTest < ActionView::TestCase
 
-  include ApplicationHelper
-  
   context 'sortable_table_header' do
     setup do
       self.stubs(:default_sort_column).returns(:not_title)
       self.stubs(:sortable_table_direction).returns("ascending")
-      self.stubs(:params).returns({ :controller => :jobs, :action => :index, :sort => nil, :order => nil })
+
+      controller.params = { :controller => :users, :action => :index, :sort => nil, :order => nil }
     end
 
     [:name, :sort].each do |param|
@@ -23,8 +22,8 @@ class ApplicationHelperTest < HelperTestCase
 
     context 'with no params[:sort] or params[:order]' do
       setup do
-        @html = sortable_table_header(:name  => 'Title', 
-                                      :sort  => 'title', 
+        @html = sortable_table_header(:name  => 'Title',
+                                      :sort  => 'title',
                                       :title => 'Sort by title')
       end
 
@@ -32,15 +31,15 @@ class ApplicationHelperTest < HelperTestCase
         assert @html.include?('<th>')
       end
     end
-    
+
     context 'with params[:class]' do
       setup do
-        @html = sortable_table_header(:name  => 'Title', 
-                                      :sort  => 'title', 
-                                      :title => 'Sort by title', 
+        @html = sortable_table_header(:name  => 'Title',
+                                      :sort  => 'title',
+                                      :title => 'Sort by title',
                                       :class => "hr_class")
       end
-      
+
       should 'return a table header with a class attribute equal to the passed in class' do
         assert @html.include?('<th class="hr_class"')
       end
@@ -48,8 +47,8 @@ class ApplicationHelperTest < HelperTestCase
 
     context "without an :anchor" do
       setup do
-        @html = sortable_table_header(:name  => 'Title', 
-                                      :sort  => 'title', 
+        @html = sortable_table_header(:name  => 'Title',
+                                      :sort  => 'title',
                                       :title => 'Sort by title')
       end
 
@@ -60,9 +59,9 @@ class ApplicationHelperTest < HelperTestCase
 
     context "with an :anchor" do
       setup do
-        @html = sortable_table_header(:name   => 'Title', 
-                                      :sort   => 'title', 
-                                      :title  => 'Sort by title', 
+        @html = sortable_table_header(:name   => 'Title',
+                                      :sort   => 'title',
+                                      :title  => 'Sort by title',
                                       :anchor => 'search-results')
       end
 
@@ -76,9 +75,9 @@ class ApplicationHelperTest < HelperTestCase
         setup do
           self.stubs(:default_sort_column).returns('title')
           self.stubs(:sortable_table_direction).returns(direction)
-          @html = sortable_table_header(:name   => 'Title', 
-                                        :sort   => 'title', 
-                                        :title  => 'Sort by title', 
+          @html = sortable_table_header(:name   => 'Title',
+                                        :sort   => 'title',
+                                        :title  => 'Sort by title',
                                         :anchor => 'search-results')
         end
 
@@ -88,5 +87,10 @@ class ApplicationHelperTest < HelperTestCase
       end
     end
   end
+
+  private
+    def params
+      controller.params
+    end
 
 end

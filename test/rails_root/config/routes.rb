@@ -1,10 +1,10 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :users
-  
-  map.namespace :admin do |admin|
-    admin.resources :users
+SortableTable::Application.routes.draw do
+  resources :users do
+    get :members, :on => :collection
+    get :show, :on => :collection
   end
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  namespace :admin do
+    resources :users
+  end
 end
