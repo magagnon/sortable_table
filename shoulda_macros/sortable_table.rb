@@ -72,7 +72,7 @@ module SortableTable
           }
           sortings.each {|sorting|
             assert !valid_sorts.include?(sorting), 
-              "link found for sortion option which is not in valid list: #{sorting}."
+              "link found for sorting option which is not in valid list: #{sorting}."
           }
         end
       end
