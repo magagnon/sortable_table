@@ -1,6 +1,12 @@
 --- !ruby/object:Gem::Specification 
 name: sortable_table
 version: !ruby/object:Gem::Version 
+  hash: 19
+  prerelease: false
+  segments: 
+  - 0
+  - 0
+  - 6
   version: 0.0.6
 platform: ruby
 authors: 
@@ -12,7 +18,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2009-02-27 00:00:00 -05:00
+date: 2012-02-22 00:00:00 -05:00
 default_executable: 
 dependencies: []
 
@@ -36,32 +42,39 @@ files:
 - lib/sortable_table/app/helpers
 - lib/sortable_table/app/helpers/application_helper.rb
 - lib/sortable_table.rb
-- rails/init.rb
-has_rdoc: false
+has_rdoc: true
 homepage: http://github.com/dancroak/sortable_table
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
 require_paths: 
 - lib
 required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
       version: "0"
-  version: 
 required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
       version: "0"
-  version: 
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.3.1
+rubygems_version: 1.3.7
 signing_key: 
-specification_version: 2
+specification_version: 3
 summary: Sort HTML tables in a Rails app.
 test_files: []
 

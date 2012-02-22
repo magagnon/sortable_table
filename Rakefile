@@ -1,6 +1,7 @@
 require 'rake'
 require 'rake/testtask'
 require 'date'
+require 'yaml'
  
 test_files_pattern = 'test/rails_root/test/{unit,functional,other}/**/*_test.rb'
 Rake::TestTask.new do |t|
