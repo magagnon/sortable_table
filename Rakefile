@@ -21,7 +21,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = "http://github.com/dancroak/sortable_table"
   s.description = "Sort HTML tables in a Rails app."
   s.authors = ["Dan Croak", "Joe Ferris", "Jon Yurek", "Boston.rb"]
-  s.files = FileList["[A-Z]*", "{lib,rails}/**/*"]
+  s.files = FileList["[A-Z]*", "{lib}/**/*"]
 end
 
 desc "Generate a gemspec file"
