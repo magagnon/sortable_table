@@ -91,7 +91,7 @@ module SortableTable
           end
 
           def table_name
-            controller_name
+            controller_name.classify.constantize.table_name
           end
         end
 
