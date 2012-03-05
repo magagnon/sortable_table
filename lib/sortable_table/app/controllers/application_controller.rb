@@ -46,7 +46,7 @@ module SortableTable
                 column = mappings[column.to_sym] || column
                 handle_compound_sorting(column, sql_sort_direction(direction))
               else
-                "#{acceptable_columns.first} #{sql_sort_direction(direction)}"
+                "#{table_name}.#{acceptable_columns.first} #{sql_sort_direction(direction)}"
               end
             end
 
@@ -82,8 +82,16 @@ module SortableTable
             if column.is_a?(Array)
               column.collect { |each| "#{each} #{direction}" }.join(',')
             else
-              "#{column} #{direction}"
+              if column.match(/\./)
+                "#{column} #{direction}"
+              else
+                "#{table_name}.#{column} #{direction}"
+              end
             end
+          end
+
+          def table_name
+            controller_name
           end
         end
 
